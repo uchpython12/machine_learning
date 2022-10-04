@@ -1,6 +1,7 @@
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 import pandas as pd
+import pickle
 
 def ML_read_excel(fileName,featuresCol,labelCol):
 
@@ -33,3 +34,13 @@ def ML_KNN(iris_X_train, iris_X_test, iris_y_train, iris_y_test):
     return knn
 
 knn=ML_KNN(iris_X_train, iris_X_test, iris_y_train, iris_y_test)
+
+#  save knn 演算法 和權重
+pickle.dump(knn, open("knn.model", 'wb'))
+
+"""
+# 讀取 機器學習演算法 和 權重
+
+import pickle
+loaded_model = pickle.load(open("knn.model", 'rb'))
+"""
