@@ -16,7 +16,7 @@ def ML_read_excel(fileName,featuresCol,labelCol):
     # print(y)
     y = y.reshape(y.shape[0])  # y=y.to_numpy() 二維陣列,改為一維陣列
     print(y, "外型大小")  # 印出結果
-    train_x, test_x, train_y, test_y = train_test_split(x, y, test_size=0.05)
+    train_x, test_x, train_y, test_y = train_test_split(x, y, test_size=0.2)
     return train_x, test_x, train_y, test_y
     # #印出y的資料
 
@@ -28,9 +28,9 @@ iris_X_train, iris_X_test, iris_y_train, iris_y_test=\
 def ML_KNN(iris_X_train, iris_X_test, iris_y_train, iris_y_test):
     knn = KNeighborsClassifier()
     knn.fit(iris_X_train, iris_y_train)
-    print("預測", knn.predict(iris_X_train))
-    print("實際", iris_y_train)
-    print('準確率: %.2f' % knn.score(iris_X_train, iris_y_train))
+    print("預測", knn.predict(iris_X_test))
+    print("實際", iris_y_test)
+    print('準確率: %.2f' % knn.score(iris_X_test, iris_y_test))
     return knn
 
 knn=ML_KNN(iris_X_train, iris_X_test, iris_y_train, iris_y_test)
